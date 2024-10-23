@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp 
+    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+    xsi:type="MailApp">
+
+  <Id>01234567-89ab-cdef-0123-456789abcdef</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Contoso</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="OmniFocus Add-in" />
+  <Description DefaultValue="Send emails to OmniFocus." />
+  
+  <!-- Use publicly available icons -->
+  <IconUrl DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_64x64.png/64px-Calendar_64x64.png" />
+  <HighResolutionIconUrl DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_128x128.png/128px-Calendar_128x128.png" />
+  <SupportUrl DefaultValue="https://www.barcodesinc.com" />
+
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://www.example.com/taskpane.html" />
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadWriteItem</Permissions>
+
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+  </Rule>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" Version="1.0">
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url" />
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadGroup">
+                <Label resid="GroupLabel" />
+                <Control xsi:type="Button" id="msgReadButton">
+                  <Label resid="ButtonLabel" />
+                  <Supertip>
+                    <Title resid="ButtonTitle" />
+                    <Description resid="ButtonDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon16" />
+                    <bt:Image size="32" resid="Icon32" />
+                    <bt:Image size="80" resid="Icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://www.example.com/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://www.example.com/taskpane.html" />
+      </bt:Urls>
+      <bt:Images>
+        <bt:Image id="Icon16" DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_16x16.png/16px-Calendar_16x16.png" />
+        <bt:Image id="Icon32" DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_32x32.png/32px-Calendar_32x32.png" />
+        <bt:Image id="Icon80" DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_80x80.png/80px-Calendar_80x80.png" />
+      </bt:Images>
+      <bt:ShortStrings>
+        <bt:String id="GroupLabel" DefaultValue="OmniFocus Tools" />
+        <bt:String id="ButtonLabel" DefaultValue="Send to OmniFocus" />
+        <bt:String id="ButtonTitle" DefaultValue="Send to OmniFocus" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="ButtonDescription" DefaultValue="Send the selected email to OmniFocus." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
