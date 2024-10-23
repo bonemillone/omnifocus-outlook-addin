@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<OfficeApp 
-    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
-    xsi:type="MailApp">
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides"
+           xsi:type="MailApp">
 
   <Id>01234567-89ab-cdef-0123-456789abcdef</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Contoso</ProviderName>
+  <ProviderName>Bonemillone</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="OmniFocus Add-in" />
-  <Description DefaultValue="Send emails to OmniFocus." />
-  
-  <!-- Use publicly available icons -->
-  <IconUrl DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_64x64.png/64px-Calendar_64x64.png" />
-  <HighResolutionIconUrl DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_128x128.png/128px-Calendar_128x128.png" />
+  <DisplayName DefaultValue="OmniFocus Outlook Add-in" />
+  <Description DefaultValue="Send emails from Outlook to OmniFocus." />
+
+  <IconUrl DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-128.png" />
+
   <SupportUrl DefaultValue="https://www.barcodesinc.com" />
 
   <Hosts>
@@ -30,7 +30,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://www.example.com/taskpane.html" />
+        <SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -42,7 +42,7 @@
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
   </Rule>
 
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" Version="1.0">
+  <VersionOverrides Version="1.0" xmlns="http://schemas.microsoft.com/office/mailappversionoverrides">
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
@@ -75,13 +75,13 @@
 
     <Resources>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://www.example.com/commands.html" />
-        <bt:Url id="Taskpane.Url" DefaultValue="https://www.example.com/taskpane.html" />
+        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
       </bt:Urls>
       <bt:Images>
-        <bt:Image id="Icon16" DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_16x16.png/16px-Calendar_16x16.png" />
-        <bt:Image id="Icon32" DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_32x32.png/32px-Calendar_32x32.png" />
-        <bt:Image id="Icon80" DefaultValue="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Calendar_80x80.png/80px-Calendar_80x80.png" />
+        <bt:Image id="Icon16" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-64.png" />
+        <bt:Image id="Icon32" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-64.png" />
+        <bt:Image id="Icon80" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-128.png" />
       </bt:Images>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="OmniFocus Tools" />
@@ -93,4 +93,5 @@
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
+
 </OfficeApp>
