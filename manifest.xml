@@ -14,7 +14,7 @@
 
   <IconUrl DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-64.png" />
   <HighResolutionIconUrl DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-128.png" />
-
+  
   <SupportUrl DefaultValue="https://www.barcodesinc.com" />
 
   <Hosts>
@@ -30,7 +30,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
+        <SourceLocation DefaultValue="https://your-public-url/taskpane.html" />
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -74,14 +74,10 @@
     </Hosts>
 
     <Resources>
-      <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html" />
-        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
-      </bt:Urls>
       <bt:Images>
-        <bt:Image id="Icon16" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-64.png" />
-        <bt:Image id="Icon32" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-64.png" />
-        <bt:Image id="Icon80" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-128.png" />
+        <bt:Image id="Icon16" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-16.png" />
+        <bt:Image id="Icon32" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-32.png" />
+        <bt:Image id="Icon80" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-80.png" />
       </bt:Images>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="OmniFocus Tools" />
@@ -93,5 +89,4 @@
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
-
 </OfficeApp>
