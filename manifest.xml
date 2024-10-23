@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
-           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides"
-           xsi:type="MailApp">
+<OfficeApp 
+    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:type="MailApp">
 
   <Id>01234567-89ab-cdef-0123-456789abcdef</Id>
   <Version>1.0.0.0</Version>
@@ -14,7 +13,7 @@
 
   <IconUrl DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-64.png" />
   <HighResolutionIconUrl DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-128.png" />
-  
+
   <SupportUrl DefaultValue="https://www.barcodesinc.com" />
 
   <Hosts>
@@ -30,8 +29,8 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://your-public-url/taskpane.html" />
-        <RequestedHeight>250</RequestedHeight>
+        <SourceLocation DefaultValue="https://bonemillone.github.io/omnifocus-outlook-addin/taskpane.html" />
+        <RequestedHeight>300</RequestedHeight>
       </DesktopSettings>
     </Form>
   </FormSettings>
@@ -42,11 +41,25 @@
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
   </Rule>
 
-  <VersionOverrides Version="1.0" xmlns="http://schemas.microsoft.com/office/mailappversionoverrides">
+  <Resources xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+    <bt:ShortStrings>
+      <bt:String id="GroupLabel" DefaultValue="OmniFocus Tools" />
+      <bt:String id="ButtonLabel" DefaultValue="Send to OmniFocus" />
+      <bt:String id="ButtonTitle" DefaultValue="Send to OmniFocus" />
+    </bt:ShortStrings>
+    <bt:LongStrings>
+      <bt:String id="ButtonDescription" DefaultValue="Create an OmniFocus task from the selected email." />
+    </bt:LongStrings>
+    <bt:Urls>
+      <bt:Url id="Taskpane.Url" DefaultValue="https://bonemillone.github.io/omnifocus-outlook-addin/taskpane.html" />
+    </bt:Urls>
+  </Resources>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" Version="1.0">
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
-          <FunctionFile resid="Commands.Url" />
+          <FunctionFile resid="Taskpane.Url" />
           <ExtensionPoint xsi:type="MessageReadCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
@@ -72,21 +85,6 @@
         </DesktopFormFactor>
       </Host>
     </Hosts>
-
-    <Resources>
-      <bt:Images>
-        <bt:Image id="Icon16" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-16.png" />
-        <bt:Image id="Icon32" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-32.png" />
-        <bt:Image id="Icon80" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-80.png" />
-      </bt:Images>
-      <bt:ShortStrings>
-        <bt:String id="GroupLabel" DefaultValue="OmniFocus Tools" />
-        <bt:String id="ButtonLabel" DefaultValue="Send to OmniFocus" />
-        <bt:String id="ButtonTitle" DefaultValue="Send to OmniFocus" />
-      </bt:ShortStrings>
-      <bt:LongStrings>
-        <bt:String id="ButtonDescription" DefaultValue="Send the selected email to OmniFocus." />
-      </bt:LongStrings>
-    </Resources>
   </VersionOverrides>
+
 </OfficeApp>
