@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
            xsi:type="MailApp">
 
   <Id>01234567-89ab-cdef-0123-456789abcdef</Id>
@@ -40,7 +41,7 @@
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
   </Rule>
 
-  <Resources xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+  <Resources>
     <bt:ShortStrings>
       <bt:String id="GroupLabel" DefaultValue="OmniFocus Tools"/>
       <bt:String id="ButtonLabel" DefaultValue="Send to OmniFocus"/>
@@ -54,9 +55,7 @@
     </bt:Urls>
   </Resources>
 
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" 
-                    xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
-                    Version="1.0">
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" Version="1.0">
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
