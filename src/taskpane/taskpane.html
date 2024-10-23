@@ -1,32 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Outlook to OmniFocus</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniFocus Outlook Add-in</title>
     <style>
-      body {
-        background-color: white;
-        color: black;
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        padding: 0;
-      }
-      #log {
-        background-color: #f1f1f1;
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin-top: 10px;
-        height: 100px;
-        overflow-y: auto;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005a9e;
+        }
     </style>
-  </head>
-  <body>
-    <h2>Test Log Output</h2>
-    <button id="testButton">Click Me</button>
-    <div id="log">Logs will appear here...</div>
+</head>
+<body>
+    <div class="container">
+        <h1>OmniFocus Task Creator</h1>
+        <p id="email-subject">Fetching email subject...</p>
+        <button id="create-task-button">Create OmniFocus Task</button>
+        <p id="status-message" style="margin-top: 10px;"></p>
+    </div>
 
-    <script src="./taskpane.js"></script>
-  </body>
+    <script>
+        // Ensure Office.js is loaded
+        Office.onReady(() => {
+            console.log('Outlook Add-in is ready!');
+            loadEmailSubject();
+        });
+
+        // Function to load the email subject into the UI
+        function loadEmailSubject() {
+            const item = Office.context.mailbox.item;
+            if (item) {
+                document.getElementById('email-subject').textContent = `Subject: ${item.subject}`;
+                console.log('Email Subject:', item.subject);
+            } else {
+                document.getElementById('email-subject').textContent = 'No email selected.';
+                console.warn('No email item found.');
+            }
+        }
+
+        // Button click handler to create a task in OmniFocus
+        document.getElementById('create-task-button').onclick = () => {
+            const item = Office.context.mailbox.item;
+            if (item) {
+                const subject = item.subject;
+                const body = item.body || "No email body";
+                const emailLink = `outlook://message/${item.itemId}`;
+
+                console.log('Creating task with subject:', subject);
+
+                // Simulating task creation (you can replace this with a real API call)
+                alert(`Creating OmniFocus task...\nTitle: ${subject}\nBody: ${body}\nLink: ${emailLink}`);
+
+                document.getElementById('status-message').textContent = 'Task sent to OmniFocus!';
+            } else {
+                alert('No email selected. Please select an email.');
+            }
+        };
+    </script>
+</body>
 </html>
