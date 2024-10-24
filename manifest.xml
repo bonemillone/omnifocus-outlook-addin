@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<OfficeApp 
-    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
-    xsi:type="MailApp">
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
+           xsi:type="MailApp">
 
   <Id>01234567-89ab-cdef-0123-456789abcdef</Id>
   <Version>1.0.0.0</Version>
@@ -42,32 +42,11 @@
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
   </Rule>
 
-  <Resources>
-    <bt:ShortStrings>
-      <bt:String id="GroupLabel" DefaultValue="OmniFocus Tools"/>
-      <bt:String id="ButtonLabel" DefaultValue="Send to OmniFocus"/>
-      <bt:String id="ButtonTitle" DefaultValue="Send to OmniFocus"/>
-    </bt:ShortStrings>
-    <bt:LongStrings>
-      <bt:String id="ButtonDescription" DefaultValue="Create an OmniFocus task from the selected email."/>
-    </bt:LongStrings>
-    <bt:Urls>
-      <bt:Url id="Taskpane.Url" DefaultValue="https://bonemillone.github.io/omnifocus-outlook-addin/taskpane.html"/>
-    </bt:Urls>
-    <bt:Images>
-      <bt:Image id="Icon16" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-16.png"/>
-      <bt:Image id="Icon32" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-32.png"/>
-      <bt:Image id="Icon80" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-80.png"/>
-    </bt:Images>
-  </Resources>
-
-  <VersionOverrides 
-      xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" 
-      Version="1.0">
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" Version="1.1">
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
-          <FunctionFile resid="Taskpane.Url"/>
+          <FunctionFile resid="functionFile"/>
           <ExtensionPoint xsi:type="MessageReadCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
@@ -93,6 +72,26 @@
         </DesktopFormFactor>
       </Host>
     </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon16" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-16.png"/>
+        <bt:Image id="Icon32" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-32.png"/>
+        <bt:Image id="Icon80" DefaultValue="https://raw.githubusercontent.com/bonemillone/omnifocus-outlook-addin/main/icons/icon-80.png"/>
+      </bt:Images>
+      <bt:ShortStrings>
+        <bt:String id="GroupLabel" DefaultValue="OmniFocus Tools"/>
+        <bt:String id="ButtonLabel" DefaultValue="Send to OmniFocus"/>
+        <bt:String id="ButtonTitle" DefaultValue="Send to OmniFocus"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="ButtonDescription" DefaultValue="Create an OmniFocus task from the selected email."/>
+      </bt:LongStrings>
+      <bt:Urls>
+        <bt:Url id="functionFile" DefaultValue="https://bonemillone.github.io/omnifocus-outlook-addin/function-file.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://bonemillone.github.io/omnifocus-outlook-addin/taskpane.html"/>
+      </bt:Urls>
+    </Resources>
   </VersionOverrides>
 
 </OfficeApp>
